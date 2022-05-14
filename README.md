@@ -1,41 +1,49 @@
-# Quasar App (quasar-crud-restapi)
+# CRUD com Quasar 2.6 e VueJs 3
 
-A Quasar Project
+## Objetivos
 
-## Install the dependencies
+Um projeto com objetivo de praticar o consumo de APIs com o Quasar e entender melhor o funcionamento da stack Frontend.
+
+## Conceitos aplicados
+
+- CRUD:
+  - POST
+  - GET
+  - PUT
+  - DELETE
+- Composables e Services
+- Formulários
+
+## Configurações para executar o projeto
+
+### Instalar dependências
+
 ```bash
-yarn
-# or
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Iniciar aplicação no modo desenvolvimento (hot-code reloading, error reporting, etc.)
+
 ```bash
 quasar dev
 ```
 
+### Analisar códgo com Lint
 
-### Lint the files
 ```bash
-yarn lint
-# or
 npm run lint
 ```
 
+### Formatar os arquivos
 
-### Format the files
 ```bash
-yarn format
-# or
 npm run format
 ```
 
+### Buildar para produção
 
-
-### Build the app for production
 ```bash
 quasar build
 ```
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Por padrão o Quasar constrói um SPA, mas pode-se criar uma PWA, Desktop (Electron), Mobile Android e iOS.
