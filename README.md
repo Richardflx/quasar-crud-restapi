@@ -1,8 +1,8 @@
-# CRUD com Quasar 2.6 e VueJs 3 / WIP
+# Aplicação de Lista de Tarefas (ToDo) com Quasar 2.6 e VueJs 3 / WIP
 
 ## Objetivos
 
-Um projeto com objetivo de praticar o consumo de APIs com o Quasar e entender melhor o funcionamento da stack Frontend.
+Praticar a interação com APIs, entender a estrutura do Quasar Framework e conceitos da stack Frontend.
 
 ## Tecnologias
 
@@ -20,7 +20,7 @@ Um projeto com objetivo de praticar o consumo de APIs com o Quasar e entender me
   - PUT
   - DELETE
 - Composables e Services
-- Formulários
+- Formulários e validação
 
 ## Configurações para executar o projeto
 
