@@ -1,10 +1,20 @@
 <template>
   <q-page padding>
-    <q-table title="Treats" :rows="posts" :columns="columns" row-key="name">
+    <q-table title="Tarefas" :rows="tasks" :columns="columns" row-key="name">
+      <template v-slot:top>
+        <span class="text-h5">Tarefas</span>
+        <q-space />
+        <q-btn
+          color="primary"
+          label="Novo registro"
+          :to="{ name: 'formTask' }"
+        ></q-btn>
+      </template>
+
       <template v-slot:body-cell-actions="props">
         <q-td :props="props">
           <q-btn
-            @click="handleDeletePost(props.row.id)"
+            @click="handleDeleteTask(props.row.id)"
             icon="delete"
             color="negative"
             dense
@@ -18,34 +28,34 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import postService from "src/services/posts";
+import taskService from "src/services/tasks";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "IndexPage",
   setup() {
-    const posts = ref([]);
-    const { list, remove } = postService();
+    const tasks = ref([]);
+    const { list, remove } = taskService();
     const $q = useQuasar();
     const columns = [
       {
         name: "id",
         field: "id",
-        label: "Post Id",
+        label: "ToDo Id",
         align: "left",
         sortable: true,
       },
       {
-        name: "title",
-        field: "title",
-        label: "Título",
+        name: "task",
+        field: "task",
+        label: "Tarefa",
         align: "left",
         sortable: true,
       },
       {
-        name: "content",
-        field: "content",
-        label: "Conteúdo",
+        name: "details",
+        field: "details",
+        label: "Detalhes",
         align: "left",
         sortable: true,
       },
@@ -57,20 +67,20 @@ export default defineComponent({
       },
     ];
 
-    onMounted(() => getPosts());
+    onMounted(() => getTasks());
 
-    const getPosts = async () => {
+    const getTasks = async () => {
       try {
         const data = await list();
-        posts.value = data;
+        tasks.value = data;
       } catch (err) {}
     };
 
-    const handleDeletePost = async (id) => {
+    const handleDeleteTask = async (id) => {
       try {
         $q.dialog({
           title: "Aviso",
-          message: "Deseja remover este post?",
+          message: "Deseja remover esta tarefa?",
           cancel: true,
           persistent: true,
         }).onOk(async () => {
@@ -80,7 +90,7 @@ export default defineComponent({
             icon: "check",
             color: "positive",
           });
-          await getPosts();
+          await getTasks();
         });
       } catch (error) {
         $q.notify({
@@ -92,9 +102,9 @@ export default defineComponent({
     };
 
     return {
-      posts,
+      tasks,
       columns,
-      handleDeletePost,
+      handleDeleteTask,
     };
   },
 });
