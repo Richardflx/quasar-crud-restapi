@@ -30,6 +30,20 @@ Praticar a interação com APIs, entender a estrutura do Quasar Framework e conc
 npm install
 ```
 
+### Iniciar API de testes com plugin json-server do Node
+
+Instalar o plugin
+
+```bash
+npm install -g json-server
+```
+
+Abrir terminal dentro da pasta json-server-api e executar o comando
+
+```bash
+json-server --watch db.json
+```
+
 ### Iniciar aplicação no modo desenvolvimento (hot-code reloading, error reporting, etc.)
 
 ```bash
