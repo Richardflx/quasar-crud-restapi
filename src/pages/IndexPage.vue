@@ -1,6 +1,12 @@
 <template>
   <q-page padding>
-    <q-table title="Tarefas" :rows="tasks" :columns="columns" row-key="name">
+    <q-table
+      :rows-per-page-options="[0]"
+      title="Tarefas"
+      :rows="tasks"
+      :columns="columns"
+      row-key="name"
+    >
       <template v-slot:top>
         <span class="text-h5">Tarefas</span>
         <q-space />
@@ -12,7 +18,14 @@
       </template>
 
       <template v-slot:body-cell-actions="props">
-        <q-td :props="props">
+        <q-td :props="props" class="q-gutter-sm">
+          <q-btn
+            @click="handleEditTask(props.row.id)"
+            icon="edit"
+            color="info"
+            dense
+            size="sm"
+          />
           <q-btn
             @click="handleDeleteTask(props.row.id)"
             icon="delete"
@@ -30,21 +43,24 @@
 import { defineComponent, ref, onMounted } from "vue";
 import taskService from "src/services/tasks";
 import { useQuasar } from "quasar";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "IndexPage",
   setup() {
     const tasks = ref([]);
-    const { list, remove } = taskService();
+    const { list, remove, update } = taskService();
     const $q = useQuasar();
+    const router = useRouter();
+
     const columns = [
-      {
-        name: "id",
-        field: "id",
-        label: "ToDo Id",
-        align: "left",
-        sortable: true,
-      },
+      // {
+      //   name: "completed",
+      //   field: "completed",
+      //   label: "Concluído",
+      //   align: "left",
+      //   sortable: true,
+      // },
       {
         name: "task",
         field: "task",
@@ -101,10 +117,23 @@ export default defineComponent({
       }
     };
 
+    const handleEditTask = (id) => {
+      router.push({ name: "formTask", params: { id } });
+    };
+
+    const complete_task = (id) => {
+      if (props.row.id) {
+        update(tasks.value.completed);
+      }
+    };
+
     return {
       tasks,
       columns,
       handleDeleteTask,
+      handleEditTask,
+      complete_task,
+      val: ref(),
     };
   },
 });

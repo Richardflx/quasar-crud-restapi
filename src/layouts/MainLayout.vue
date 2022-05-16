@@ -11,9 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar CRUD REST API </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title> Minhas Tarefas </q-toolbar-title>
       </q-toolbar>
     </q-header>
 

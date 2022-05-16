@@ -9,7 +9,7 @@ const routes = [
         component: () => import("pages/IndexPage.vue"),
       },
       {
-        path: "form-task",
+        path: "form-task/:id?",
         name: "formTask",
         component: () => import("pages/FormTaskPage.vue"),
       },
