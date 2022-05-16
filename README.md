@@ -1,4 +1,4 @@
-# Aplicação de Lista de Tarefas (ToDo) com Quasar 2.6 e VueJs 3 / WIP
+# Aplicação de Lista de Tarefas (ToDo) com Quasar 2.6 e VueJs 3
 
 ## Objetivos
 
